@@ -1,8 +1,9 @@
 package com.cliffside;
 
-import org.checkerframework.checker.units.qual.C;
-import org.springframework.stereotype.Controller;
+import com.cliffside.service.HealthStatusService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -11,10 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MainController {
+
+    @Autowired
+    HealthStatusService healthStatusService;
+
     @GetMapping("/getHi")
     public String test(){
 
-
         return "你好哦";
+    }
+
+    @GetMapping("/health")
+    public String health(@RequestParam("status") Boolean status) {
+
+        healthStatusService.setStatus(status);
+        return healthStatusService.getStatus();
     }
 }
