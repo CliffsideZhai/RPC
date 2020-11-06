@@ -1,4 +1,4 @@
-package com.cliffside.demo.controller;
+package com.cliffside.controller;
 
 
 import com.cliffside.UserApi.Person;
@@ -30,9 +30,9 @@ public class UserController implements UserApi {
 
         try {
             System.out.println("准备睡");
-            int i = 1/0;
-            Thread.sleep(1);
-        } catch (Exception e) {
+
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
