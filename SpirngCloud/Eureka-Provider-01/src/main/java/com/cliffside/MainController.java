@@ -3,9 +3,12 @@ package com.cliffside;
 import com.cliffside.service.HealthStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.net.URI;
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * @author cliffside
@@ -31,4 +34,30 @@ public class MainController {
         healthStatusService.setStatus(status);
         return healthStatusService.getStatus();
     }
+
+    @GetMapping("/getMap")
+    public Map<String,String > getMap(){
+        return Collections.singletonMap("portId","8001");
+    }
+
+    @GetMapping("/getPerson")
+    public Person getPerson(){
+        Person person = new Person(8001, "8001");
+
+        return person;
+    }
+
+
+    @PostMapping("/postLocation")
+    public URI postParam(@RequestBody Person person, HttpServletResponse response) throws Exception {
+
+        URI uri = new URI("https://www.baidu.com/s?wd="+person.getName().trim());
+
+        //	response.addHeader("Location", uri.toString());
+
+        return uri;
+
+    }
+
+
 }
