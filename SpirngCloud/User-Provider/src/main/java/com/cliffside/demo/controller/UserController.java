@@ -27,11 +27,11 @@ public class UserController implements UserApi {
 
     @Override
     public String alive() {
-
+        int b = 1/0;
         try {
             System.out.println("准备睡");
-            int i = 1/0;
-            Thread.sleep(1);
+
+            Thread.sleep(10);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -39,7 +39,7 @@ public class UserController implements UserApi {
 
         int i = count.getAndIncrement();
         System.out.println("====好的第：" + i + "次调用");
-        return "port:" + port;
+        return "我是provider port:" + port;
     }
 
     @Override

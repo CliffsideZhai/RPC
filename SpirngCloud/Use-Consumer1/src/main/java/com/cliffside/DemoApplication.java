@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableHystrixDashboard
+
 public class DemoApplication {
 
     public static void main(String[] args) {

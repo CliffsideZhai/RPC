@@ -4,10 +4,8 @@ import com.cliffside.UserApi.Person;
 import com.netflix.hystrix.exception.HystrixTimeoutException;
 import feign.FeignException;
 import feign.hystrix.FallbackFactory;
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.util.Map;
 
@@ -20,7 +18,6 @@ public class UserProviderBackFactory implements FallbackFactory<ConsumerApi> {
     @Override
     public ConsumerApi create(Throwable throwable) {
         return new ConsumerApi() {
-
 
             @Override
             public Map<Integer, String> getMap(Integer id) {

@@ -6,8 +6,9 @@ import com.cliffside.service.RestService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,6 @@ public class MainController {
 
     // 给SpringMVC 编程servlet
     @GetMapping("/alive2")
-    @HystrixCommand(defaultFallback = "back")
     public String alive2() {
         /**
          * URL 不能变
@@ -46,11 +46,6 @@ public class MainController {
     }
 
 
-    public String back() {
-
-        return "呵呵";
-    }
-
 
     @GetMapping("/alive")
     public String alive() {
@@ -60,7 +55,7 @@ public class MainController {
          * jar
          * 文档
          */
-        return "consumer9500 "+port+"->>>>>>"+ api.alive();
+        return "consumer "+port+"->>>>>>"+ api.alive();
 
 
         /**
